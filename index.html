@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim escolar</title>
+    <style>
+        body{
+            background-color: dodgerblue;
+            font-family: Georgia;      
+        }
+        header{
+            color: white;
+            text-align: center;
+        }
+        section{
+            text-align: center;
+            background-color: white;
+            width: 400px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.308);
+        }
+        footer{
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+        img{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Média Final</h1>
+    </header>
+    <section>
+        <div>
+            <p>
+                Coloque aqui a sua média: &#x1F449 <input type="number" name="média" id="txtm">
+            </p>
+            <p>
+                <input type="button" value="Verificar resultado" onclick="clicar()">
+            </p>
+        </div>
+        <div id="res">
+            <p>Resultado final: </p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Projeto de Ana Vitória para o CursoemVídeo</p>
+    </footer>
+
+    <script>
+        function clicar(){
+            var b = document.getElementById('txtm')
+            var média = Number(b.value)
+            var res = document.getElementById('res')
+            var img = document.createElement('img')
+            img.setAttribute('id', 'foto')
+            res.innerHTML = `A sua média final foi ${média}.`
+        
+        if(b.value.length == 0){
+            window.alert('Digite a sua média, por favor.')
+        } else if(média < 5){
+            res.innerHTML = 'Parece que você não conseguiu passar de ano. Que pena.'
+            img.setAttribute('src', 'reprovado-250.jpg')
+        } else if (média <= 7){
+            res.innerHTML = 'Você está de recuperação. Estude para conseguir passar.'
+            img.setAttribute('src', 'recuperação-250.jpg')
+        } else{
+            res.innerHTML = 'Parabéns, você passou de ano. Boas festas.'
+            img.setAttribute('src', 'aprovado-250.jpg')
+        }
+        res.appendChild(img)
+        }
+    </script>
+    
+</body>
+</html>
